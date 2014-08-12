@@ -1,0 +1,132 @@
+<html>
+
+	<head>
+		<title>Mamadous Swag!!</title>
+
+		<script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.min.js"></script>
+		<script type="text/processing" data-processing-target="mycanvas">
+			"use strict";
+			// This is where you will write all of the processing code
+			var particle1;
+			var particle2;
+			var particle3;
+			// var particle4;
+
+			var WIDTH = 900;
+			var HEIGHT = 800;
+
+			// The setup method is run first when the page loads.
+			void setup()
+			{
+			  size(WIDTH, HEIGHT);
+			  noStroke();
+			  background(88, 88, 88);
+
+			  	// particle1 = new Particle(100, 200, 10, 5, 255, 0, 0);
+			  	particle1 = new Particle(40, 200, 10, 5, 255, 0,6);
+			  	particle2 = new Particle(100, 0, 10, 5, 255, 0, 4);
+			  	particle3 = new Particle(34, 91, 18, 50, 200, 0, 3)
+			//   	particle4 = new Particle(20, 19, 300, 23, 60, 30, 0)
+			// }
+
+			void draw() {
+  	        //it will have all that drawings below here
+				background(80, 208, 0);
+				//ellipse takes 4 points(x-cd,y-cd.width,height
+				// particle1.paint();
+				particle1.paint();
+				particle2.paint();
+				particle3.paint();
+				// particle4.paint();
+
+			}
+
+			class Particle 
+			{
+				var x, y;
+				var vx, bx;
+				var red, green, blue;
+				
+				Particle(x, y, vx, bx, red, green, blue)
+
+				{ //Properties of how a ball would work,
+					//this class will generate new balls/particles
+					this.x = x;
+					this.y = y;
+					
+					this.vx = vx;
+					this.bx = bx;
+
+					this.red = red;
+					this.green = green;
+					this.blue = blue;
+				
+				}
+
+			void setRandomColor() {
+				this.red = random(1, 255);
+				this.green = random(1, 255);
+				this.blue = random(1, 255);
+			}			
+	        void paint() {
+				if (this.x < 0 || this.x > WIDTH) { 
+					this.vx = this.vx * -1;
+					setRandomColor();
+				}
+
+				if (y < 0 || y > HEIGHT) { 
+					this.bx = this.bx * -1;
+					setRandomColor();
+				}
+
+				this.x += vx;
+					this.y += bx; 
+
+				fill(this.red, this.green, this.blue);
+				ellipse(this.x, this.y, 80, 88);
+			}
+		}
+			/*So many things have to happen for one ball to move 
+			and change color, It must intake so much varieables 
+			and properties just for it to move..... And thats why
+			we have and make classses to hold all thsese properties*/
+
+
+		 </script>		
+	<style>
+		body {
+			font-family: helvetica;
+			color: red;
+			padding: 14px;
+		}
+		li  {
+			font-size: 22px;
+			display: inline-block;
+			padding: 7px;
+		}
+
+
+	</style>
+</head>
+	
+	<body>
+
+		<h1>Big Boss Diallo Processing Application</h1>
+		<ul>
+			<div class="conatiner"> 
+				<li>Colors     |</li>
+				<li>Background     |</li>
+				<li>Font-family     |</li>
+			</div>
+				<li><a href="google.com"></a> Click the circle to go to Google!</li>
+		</ul>
+
+				<!-- This "canvas" (below) will be where all the drawings will be drawn.-->
+		<canvas id="mycanvas"></canvas>
+	</body>
+	
+</html>
+
+
+
+
